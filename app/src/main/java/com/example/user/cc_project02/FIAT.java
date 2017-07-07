@@ -6,9 +6,9 @@ import behaviours.Tradable;
  * Created by user on 07/07/2017.
  */
 
-public class Crypto extends Currency implements Tradable {
+public class FIAT extends Currency implements Tradable{
 
-    public Crypto(CurrencyType currency, String image) {
+    public FIAT(CurrencyType currency, String image) {
         super(currency, image);
     }
 
