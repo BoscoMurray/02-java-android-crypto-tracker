@@ -14,7 +14,7 @@ public class CryptoTest {
 
     @Before
     public void before() {
-        crypto = new Crypto(CurrencyType.BITCOIN, "R.drawable.bitcoin");
+        crypto = new Crypto(CurrencyType.BITCOIN, "R.drawable.bitcoin", 100);
     }
 
     @Test
@@ -28,8 +28,13 @@ public class CryptoTest {
     }
 
     @Test
+    public void canGetBasePrice() {
+        assertEquals(100, crypto.getBasePrice());
+    }
+
+    @Test
     public void canGetPrice() {
-        assertEquals(10, crypto.getPrice());
+        assertNotNull(crypto.getPrice().getPriceByDate("20170704"));
     }
 
 }

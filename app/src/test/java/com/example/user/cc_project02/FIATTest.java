@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by user on 07/07/2017.
@@ -15,7 +16,7 @@ public class FIATTest {
 
     @Before
     public void before() {
-        fiat = new FIAT(CurrencyType.DOLLAR, "R.drawable.dollar");
+        fiat = new FIAT(CurrencyType.DOLLAR, "R.drawable.dollar", 50);
     }
 
     @Test
@@ -29,7 +30,12 @@ public class FIATTest {
     }
 
     @Test
+    public void canGetBasePrice() {
+        assertEquals(50, fiat.getBasePrice());
+    }
+
+    @Test
     public void canGetPrice() {
-        assertEquals(10, fiat.getPrice());
+        assertNotNull(fiat.getPrice().getPriceByDate("20170704"));
     }
 }

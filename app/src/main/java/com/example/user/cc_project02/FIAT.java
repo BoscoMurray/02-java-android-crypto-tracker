@@ -6,14 +6,26 @@ import behaviours.Tradable;
  * Created by user on 07/07/2017.
  */
 
-public class FIAT extends Currency implements Tradable{
+public class FIAT extends Currency implements Tradable {
 
-    public FIAT(CurrencyType currency, String image) {
+    private int basePrice;
+    private Price price;
+
+    public FIAT(CurrencyType currency, String image,int basePrice) {
         super(currency, image);
+        this.basePrice = basePrice;
+        createPriceList(basePrice);
     }
 
-    @Override
-    public int getPrice() {
-        return 10;
+    private void createPriceList(int basePrice) {
+        price = new Price(basePrice);
+    }
+
+    public int getBasePrice() {
+        return basePrice;
+    }
+
+    public Price getPrice() {
+        return price;
     }
 }
