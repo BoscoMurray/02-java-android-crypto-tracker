@@ -3,6 +3,8 @@ package com.example.user.cc_project02;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import enums.CurrencyName;
 import enums.CurrencyType;
 import enums.TransactionType;
@@ -15,18 +17,18 @@ import static org.junit.Assert.*;
 public class TransactionTest {
 
     private Currency bitcoin;
-    private Currency euro;
+    private Currency monero;
     private Transaction txBuy01;
     private Transaction txBuy02;
     private Transaction txSell01;
 
     @Before
     public void before() {
-        bitcoin = new Currency(CurrencyType.CRYPTO, CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
-        euro = new Currency(CurrencyType.FIAT, CurrencyName.EURO, "R.drawable.euro", 2);
+        bitcoin = new Currency(CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
+        monero = new Currency(CurrencyName.MONERO, "R.drawable.monero", 50);
         txBuy01 = new Transaction("20170626", TransactionType.BUY, bitcoin, 2);
-        txBuy02 = new Transaction("20170628", TransactionType.BUY, euro, 500);
-        txSell01 = new Transaction("20170701", TransactionType.SELL, euro, 500);
+        txBuy02 = new Transaction("20170628", TransactionType.BUY, monero, 100);
+        txSell01 = new Transaction("20170701", TransactionType.SELL, monero, -10);
     }
 
     @Test
@@ -61,8 +63,18 @@ public class TransactionTest {
     }
 
     @Test
-    public void canGetTxTotal() {
+    public void canGetTxSum() {
         txBuy01.setTxPrice(500);
-        assertEquals(1000, txBuy01.getTxTotal());
+        assertEquals(1000, txBuy01.getTxSum());
+    }
+
+    @Test
+    public void canGetSumOfTxs() {
+        ArrayList<Transaction> arrayTxs = new ArrayList<>();
+        txBuy01.setTxPrice(1000);
+        txSell01.setTxPrice(55);
+        arrayTxs.add(txBuy01);
+        arrayTxs.add(txSell01);
+        assertEquals(1450, txBuy01.getSumOfTxs(arrayTxs));
     }
 }

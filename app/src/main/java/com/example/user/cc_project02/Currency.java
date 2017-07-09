@@ -9,22 +9,16 @@ import enums.CurrencyType;
 
 public class Currency {
 
-    private CurrencyType type;
     private CurrencyName name;
     private String image;
     private int basePrice;
     private Price priceList;
 
-    public Currency(CurrencyType type, CurrencyName name, String image, int basePrice) {
-        this.type = type;
+    public Currency(CurrencyName name, String image, int basePrice) {
         this.name = name;
         this.image = image;
         this.basePrice = basePrice;
         createPriceList(basePrice);
-    }
-
-    public CurrencyType getType() {
-        return this.type;
     }
 
     public CurrencyName getName() {

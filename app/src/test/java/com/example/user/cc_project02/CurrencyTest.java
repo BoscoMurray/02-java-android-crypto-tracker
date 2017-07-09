@@ -19,12 +19,7 @@ public class CurrencyTest {
 
     @Before
     public void before() {
-        bitcoin = new Currency(CurrencyType.CRYPTO, CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
-    }
-
-    @Test
-    public void canGetCurrencyType() {
-        assertEquals(CurrencyType.CRYPTO, bitcoin.getType());
+        bitcoin = new Currency(CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
     }
 
     @Test

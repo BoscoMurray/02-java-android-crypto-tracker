@@ -11,8 +11,6 @@ public enum CurrencyName {
     LITECOIN,
     ETHEREUM,
     MAIDSAFE,
-    DOLLAR,
-    POUND,
-    EURO
+    UBIQ
 
 }

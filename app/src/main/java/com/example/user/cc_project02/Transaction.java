@@ -1,6 +1,8 @@
 package com.example.user.cc_project02;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 import enums.TransactionType;
 
 /**
@@ -47,9 +49,17 @@ public class Transaction {
         this.price = newPrice;
     }
 
-    public int getTxTotal() {
+    public int getTxSum() {
         int total = this.quantity * this.price;
         return total;
+    }
+
+    public int getSumOfTxs(ArrayList<Transaction> arrayTxs) {
+        int sum = 0;
+        for(Transaction tx : arrayTxs) {
+            sum += tx.getTxSum();
+        }
+        return sum;
     }
 
 }
