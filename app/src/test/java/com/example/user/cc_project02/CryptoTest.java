@@ -2,6 +2,9 @@ package com.example.user.cc_project02;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import enums.CurrencyType;
+
 import static org.junit.Assert.*;
 
 /**
@@ -34,7 +37,7 @@ public class CryptoTest {
 
     @Test
     public void canGetPrice() {
-        assertNotNull(crypto.getPrice().getPriceByDate("20170704"));
+        assertNotNull(crypto.getPriceList().getPriceByDate("20170704"));
     }
 
 }

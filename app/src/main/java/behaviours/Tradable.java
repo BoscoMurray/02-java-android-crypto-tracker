@@ -9,5 +9,5 @@ import java.util.HashMap;
  */
 
 public interface Tradable {
-    Price getPrice();
+    Price getPriceList();
 }

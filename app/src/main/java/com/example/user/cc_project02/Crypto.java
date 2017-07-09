@@ -1,8 +1,7 @@
 package com.example.user.cc_project02;
 
-import java.util.HashMap;
-
 import behaviours.Tradable;
+import enums.CurrencyType;
 
 /**
  * Created by user on 07/07/2017.
@@ -11,7 +10,7 @@ import behaviours.Tradable;
 public class Crypto extends Currency implements Tradable {
 
     private int basePrice;
-    private Price price;
+    private Price priceList;
 
     public Crypto(CurrencyType currency, String image, int basePrice) {
         super(currency, image);
@@ -20,15 +19,15 @@ public class Crypto extends Currency implements Tradable {
     }
 
     private void createPriceList(int basePrice) {
-        price = new Price(basePrice);
+        priceList = new Price(basePrice);
     }
 
     public int getBasePrice() {
         return basePrice;
     }
 
-    public Price getPrice() {
-        return price;
+    public Price getPriceList() {
+        return priceList;
     }
 
 }

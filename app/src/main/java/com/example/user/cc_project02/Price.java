@@ -23,16 +23,16 @@ public class Price {
     }
 
     private void createPriceList() {
+        Calendar today = Calendar.getInstance();
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.DATE, -30);
-        Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.DATE, +30);
+        startDate.add(Calendar.DATE, -60);
         priceList = new HashMap<>();
-        for (Calendar myDate = startDate; myDate.before(endDate); myDate.add(Calendar.DATE, +1)) {
+
+        for (Calendar myDate = startDate; myDate.before(today); myDate.add(Calendar.DATE, +1)) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-            String stringDate = sdf.format(new Date(myDate.getTimeInMillis()));
+            String dateString = sdf.format(new Date(myDate.getTimeInMillis()));
             Integer randomPrice = this.basePrice + this.getRandom();
-            priceList.put(stringDate, randomPrice);
+            priceList.put(dateString, randomPrice);
         }
     }
 

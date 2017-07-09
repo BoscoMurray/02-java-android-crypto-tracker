@@ -1,4 +1,4 @@
-package com.example.user.cc_project02;
+package enums;
 
 /**
  * Created by user on 07/07/2017.

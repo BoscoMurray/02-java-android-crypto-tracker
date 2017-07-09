@@ -3,6 +3,8 @@ package com.example.user.cc_project02;
 import org.junit.Before;
 import org.junit.Test;
 
+import enums.CurrencyType;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -36,6 +38,6 @@ public class FIATTest {
 
     @Test
     public void canGetPrice() {
-        assertNotNull(fiat.getPrice().getPriceByDate("20170704"));
+        assertNotNull(fiat.getPriceList().getPriceByDate("20170704"));
     }
 }
