@@ -1,8 +1,6 @@
 package com.example.user.cc_project02;
 
 import java.text.SimpleDateFormat;
-
-import enums.CurrencyType;
 import enums.TransactionType;
 
 /**
@@ -15,12 +13,14 @@ public class Transaction {
     private TransactionType txType;
     private Currency currency;
     private int quantity;
+    private int price;
 
     public Transaction(String dateString, TransactionType txType, Currency currency, int quantity) {
         this.dateString = dateString;
         this.txType = txType;
         this.currency = currency;
         this.quantity = quantity;
+        this.price = currency.getPriceList().getPriceByDate(dateString);
     }
 
     public String getTxDate() {
@@ -31,13 +31,20 @@ public class Transaction {
         return txType;
     }
 
-    public CurrencyType getCurrency() {
-        return currency.getCurrency();
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public int getQuantity() {
+    public int getTxQuantity() {
         return quantity;
     }
 
+    public int getTxPrice() {
+        return price;
+    }
+
+    public void setTxPrice(int newPrice) {
+        this.price = newPrice;
+    }
 
 }

@@ -3,6 +3,7 @@ package com.example.user.cc_project02;
 import org.junit.Before;
 import org.junit.Test;
 
+import enums.CurrencyName;
 import enums.CurrencyType;
 import enums.TransactionType;
 import static org.junit.Assert.*;
@@ -13,14 +14,16 @@ import static org.junit.Assert.*;
 
 public class TransactionTest {
 
+    private Currency bitcoin;
+    private Currency euro;
     private Transaction txBuy01;
     private Transaction txBuy02;
     private Transaction txSell01;
 
     @Before
     public void before() {
-        Crypto bitcoin = new Crypto(CurrencyType.BITCOIN, "R.drawable.bitcoin", 1000);
-        FIAT euro = new FIAT(CurrencyType.EURO, "R.drawable.euro", 2);
+        bitcoin = new Currency(CurrencyType.CRYPTO, CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
+        euro = new Currency(CurrencyType.FIAT, CurrencyName.EURO, "R.drawable.euro", 2);
         txBuy01 = new Transaction("20170626", TransactionType.BUY, bitcoin, 2);
         txBuy02 = new Transaction("20170628", TransactionType.BUY, euro, 500);
         txSell01 = new Transaction("20170701", TransactionType.SELL, euro, 500);
@@ -38,12 +41,28 @@ public class TransactionTest {
 
     @Test
     public void canGetCurrency() {
-        assertEquals(CurrencyType.BITCOIN, txBuy01.getCurrency());
+        assertEquals(bitcoin, txBuy01.getCurrency());
     }
 
     @Test
-    public void canGetQuantity() {
-        assertEquals(2, txBuy01.getQuantity());
+    public void canGetTxQuantity() {
+        assertEquals(2, txBuy01.getTxQuantity());
     }
+
+    @Test
+    public void canGetTxPrice() {
+        assertNotNull(txBuy01.getTxPrice());
+    }
+
+    @Test
+    public void canSetTxPrice() {
+        txBuy01.setTxPrice(500);
+        assertEquals(500, txBuy01.getTxPrice());
+    }
+
+//    @Test
+//    public void canGetTotalPriceInTxs() {
+//        assertEquals();
+//    }
 
 }

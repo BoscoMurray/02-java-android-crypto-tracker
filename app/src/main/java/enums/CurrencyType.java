@@ -6,13 +6,7 @@ package enums;
 
 public enum CurrencyType {
 
-    BITCOIN,
-    MONERO,
-    LITECOIN,
-    ETHEREUM,
-    MAIDSAFE,
-    DOLLAR,
-    POUND,
-    EURO
+    CRYPTO,
+    FIAT
 
 }

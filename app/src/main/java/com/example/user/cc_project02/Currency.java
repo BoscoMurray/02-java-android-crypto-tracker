@@ -1,27 +1,50 @@
 package com.example.user.cc_project02;
 
+import enums.CurrencyName;
 import enums.CurrencyType;
 
 /**
  * Created by user on 07/07/2017.
  */
 
-public abstract class Currency {
+public class Currency {
 
-    private CurrencyType currency;
+    private CurrencyType type;
+    private CurrencyName name;
     private String image;
+    private int basePrice;
+    private Price priceList;
 
-    public Currency(CurrencyType currency, String image) {
-        this.currency = currency;
+    public Currency(CurrencyType type, CurrencyName name, String image, int basePrice) {
+        this.type = type;
+        this.name = name;
         this.image = image;
+        this.basePrice = basePrice;
+        createPriceList(basePrice);
     }
 
-    public CurrencyType getCurrency() {
-        return this.currency;
+    public CurrencyType getType() {
+        return this.type;
+    }
+
+    public CurrencyName getName() {
+        return this.name;
     }
 
     public String getImage() {
         return this.image;
+    }
+
+    private void createPriceList(int basePrice) {
+        priceList = new Price(basePrice);
+    }
+
+    public int getBasePrice() {
+        return basePrice;
+    }
+
+    public Price getPriceList() {
+        return priceList;
     }
 
 }
