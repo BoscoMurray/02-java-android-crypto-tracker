@@ -31,5 +31,19 @@ public class TransactionTest {
         assertEquals("20170626", txBuy01.getTxDate());
     }
 
+    @Test
+    public void canGetTxType() {
+        assertEquals(TransactionType.BUY, txBuy01.getTxType());
+    }
+
+    @Test
+    public void canGetCurrency() {
+        assertEquals(CurrencyType.BITCOIN, txBuy01.getCurrency());
+    }
+
+    @Test
+    public void canGetQuantity() {
+        assertEquals(2, txBuy01.getQuantity());
+    }
 
 }

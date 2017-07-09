@@ -2,6 +2,7 @@ package com.example.user.cc_project02;
 
 import java.text.SimpleDateFormat;
 
+import enums.CurrencyType;
 import enums.TransactionType;
 
 /**
@@ -24,6 +25,18 @@ public class Transaction {
 
     public String getTxDate() {
         return this.dateString;
+    }
+
+    public TransactionType getTxType() {
+        return txType;
+    }
+
+    public CurrencyType getCurrency() {
+        return currency.getCurrency();
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
 
