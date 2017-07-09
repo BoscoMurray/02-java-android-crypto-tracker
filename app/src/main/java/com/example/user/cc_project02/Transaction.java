@@ -47,4 +47,9 @@ public class Transaction {
         this.price = newPrice;
     }
 
+    public int getTxTotal() {
+        int total = this.quantity * this.price;
+        return total;
+    }
+
 }

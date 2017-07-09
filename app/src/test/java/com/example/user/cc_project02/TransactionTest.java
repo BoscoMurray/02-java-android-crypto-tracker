@@ -60,9 +60,9 @@ public class TransactionTest {
         assertEquals(500, txBuy01.getTxPrice());
     }
 
-//    @Test
-//    public void canGetTotalPriceInTxs() {
-//        assertEquals();
-//    }
-
+    @Test
+    public void canGetTxTotal() {
+        txBuy01.setTxPrice(500);
+        assertEquals(1000, txBuy01.getTxTotal());
+    }
 }
