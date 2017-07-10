@@ -36,11 +36,11 @@ public class Transaction {
         return currency;
     }
 
-    public int getTxQuantity() {
+    public Integer getTxQuantity() {
         return quantity;
     }
 
-    public int getTxPrice() {
+    public Integer getTxPrice() {
         return price;
     }
 
@@ -48,16 +48,14 @@ public class Transaction {
         this.price = newPrice;
     }
 
-    public int getTxSum() {
+    public Integer getTxSum() {
         int total = this.quantity * this.price;
         return total;
     }
 
-    public int getSumOfTxs(ArrayList<Transaction> arrayTxs) {
+    public Integer getSumOfTxs(ArrayList<Transaction> arrayTxs) {
         int sum = 0;
-        for(Transaction tx : arrayTxs) {
-            sum += tx.getTxSum();
-        }
+        for(Transaction tx : arrayTxs) { sum += tx.getTxSum(); }
         return sum;
     }
 

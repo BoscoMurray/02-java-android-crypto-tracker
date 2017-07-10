@@ -17,6 +17,7 @@ public class Currency {
         this.name = name;
         this.image = image;
         this.basePrice = basePrice;
+        //getResources().getIdentifier(currency.getImage(), "drawable", this.getPackageName());
         createPriceList(basePrice);
     }
 

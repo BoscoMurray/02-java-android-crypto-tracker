@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,8 +16,11 @@ import java.util.ArrayList;
 
 public class MainActivityAdapter extends ArrayAdapter<Transaction> {
 
+    Context context;
+
     public MainActivityAdapter(Context context, ArrayList<Transaction> txList) {
         super(context, 0, txList);
+        this.context = context;
     }
 
     @Override
@@ -31,11 +35,17 @@ public class MainActivityAdapter extends ArrayAdapter<Transaction> {
         TextView currency = (TextView) listItemView.findViewById(R.id.currency);
         currency.setText(currentTx.getCurrency().getName().toString());
 
-        TextView currency = (TextView) listItemView.findViewById(R.id.quantity);
-        currency.setText(currentTx.getTxQuantity());
+//        getResources().getIdentifier(currency.getImage(), "drawable", this.getPackageName());
+        int drawableResourceId = context.getResources().getIdentifier(currentTx.getCurrency().getImage(), "drawable", context.getPackageName());
 
-        TextView currency = (TextView) listItemView.findViewById(R.id.sum);
-        currency.setText(currentTx.getTxSum());
+        ImageView image = (ImageView) listItemView.findViewById(R.id.imageView);
+        image.setImageResource(drawableResourceId);
+
+        TextView quantity = (TextView) listItemView.findViewById(R.id.quantity);
+        quantity.setText(currentTx.getTxQuantity().toString());
+
+        TextView sum = (TextView) listItemView.findViewById(R.id.sum);
+        sum.setText(currentTx.getTxSum().toString());
 
         return listItemView;
     }

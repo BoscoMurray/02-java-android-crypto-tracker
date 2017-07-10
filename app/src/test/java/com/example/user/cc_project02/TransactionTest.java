@@ -23,8 +23,8 @@ public class TransactionTest {
 
     @Before
     public void before() {
-        bitcoin = new Currency(CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
-        monero = new Currency(CurrencyName.MONERO, "R.drawable.monero", 50);
+        bitcoin = new Currency(CurrencyName.BITCOIN, "bitcoin", 1000);
+        monero = new Currency(CurrencyName.MONERO, "monero", 50);
         txBuy01 = new Transaction("20170626", TransactionType.BUY, bitcoin, 2);
         txBuy02 = new Transaction("20170628", TransactionType.BUY, monero, 100);
         txSell01 = new Transaction("20170701", TransactionType.SELL, monero, -10);
@@ -47,7 +47,7 @@ public class TransactionTest {
 
     @Test
     public void canGetTxQuantity() {
-        assertEquals(2, txBuy01.getTxQuantity());
+        assertEquals((Integer) 2, txBuy01.getTxQuantity());
     }
 
     @Test
@@ -58,13 +58,13 @@ public class TransactionTest {
     @Test
     public void canSetTxPrice() {
         txBuy01.setTxPrice(500);
-        assertEquals(500, txBuy01.getTxPrice());
+        assertEquals((Integer) 500, txBuy01.getTxPrice());
     }
 
     @Test
     public void canGetTxSum() {
         txBuy01.setTxPrice(500);
-        assertEquals(1000, txBuy01.getTxSum());
+        assertEquals((Integer) 1000, txBuy01.getTxSum());
     }
 
     @Test
@@ -74,6 +74,6 @@ public class TransactionTest {
         txSell01.setTxPrice(55);
         arrayTxs.add(txBuy01);
         arrayTxs.add(txSell01);
-        assertEquals(1450, txBuy01.getSumOfTxs(arrayTxs));
+        assertEquals((Integer) 1450, txBuy01.getSumOfTxs(arrayTxs));
     }
 }
