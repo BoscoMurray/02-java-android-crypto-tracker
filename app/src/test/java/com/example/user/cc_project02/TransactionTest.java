@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import enums.CurrencyName;
-import enums.CurrencyType;
 import enums.TransactionType;
 import static org.junit.Assert.*;
 

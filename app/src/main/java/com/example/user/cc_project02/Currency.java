@@ -1,7 +1,6 @@
 package com.example.user.cc_project02;
 
 import enums.CurrencyName;
-import enums.CurrencyType;
 
 /**
  * Created by user on 07/07/2017.

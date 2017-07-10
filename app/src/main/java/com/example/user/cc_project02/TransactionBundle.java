@@ -3,7 +3,6 @@ package com.example.user.cc_project02;
 import java.util.ArrayList;
 
 import enums.CurrencyName;
-import enums.CurrencyType;
 import enums.TransactionType;
 
 /**
@@ -32,7 +31,7 @@ public class TransactionBundle {
         txList.add(new Transaction("20170701", TransactionType.BUY, maidsafe, 500));
         txList.add(new Transaction("20170701", TransactionType.SELL, bitcoin, 1));
         txList.add(new Transaction("20170701", TransactionType.SELL, monero, 10));
-        txList.add(new Transaction("20170701", TransactionType.SELL, litecoin, 10));
+        txList.add(new Transaction("20170701", TransactionType.SELL, ubiq, 10));
     }
 
     public ArrayList<Transaction> getList() {
