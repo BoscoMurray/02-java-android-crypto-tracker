@@ -53,10 +53,4 @@ public class Transaction {
         return total;
     }
 
-    public Integer getSumOfTxs(ArrayList<Transaction> arrayTxs) {
-        int sum = 0;
-        for(Transaction tx : arrayTxs) { sum += tx.getTxSum(); }
-        return sum;
-    }
-
 }

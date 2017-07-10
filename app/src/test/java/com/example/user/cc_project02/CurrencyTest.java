@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import enums.CurrencyName;
-import enums.CurrencyType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -19,7 +18,7 @@ public class CurrencyTest {
 
     @Before
     public void before() {
-        bitcoin = new Currency(CurrencyName.BITCOIN, "R.drawable.bitcoin", 1000);
+        bitcoin = new Currency(CurrencyName.BITCOIN, "bitcoin", 1000);
     }
 
     @Test
@@ -29,7 +28,7 @@ public class CurrencyTest {
 
     @Test
     public void canGetImage() {
-        assertEquals("R.drawable.bitcoin", bitcoin.getImage());
+        assertEquals("bitcoin", bitcoin.getImage());
     }
 
     @Test
