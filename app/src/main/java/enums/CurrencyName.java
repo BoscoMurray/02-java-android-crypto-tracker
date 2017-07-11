@@ -6,12 +6,22 @@ package enums;
 
 public enum CurrencyName {
 
-    BITCOIN,
-    MONERO,
-    LITECOIN,
-    ETHEREUM,
-    MAIDSAFE,
-    UBIQ,
-    RIPPLE
+    BITCOIN("BITCOIN"),
+    MONERO("MONERO"),
+    LITECOIN("LITECOIN"),
+    ETHEREUM("ETHEREUM"),
+    MAIDSAFE("MAIDSAFE"),
+    UBIQ("UBIQ"),
+    RIPPLE("RIPPLE");
+
+    private String friendlyName;
+
+    private CurrencyName(String friendlyName){
+        this.friendlyName = friendlyName;
+    }
+
+    @Override public String toString(){
+        return friendlyName;
+    }
 
 }

@@ -6,7 +6,16 @@ package enums;
 
 public enum TransactionType {
 
-    BUY,
-    SELL
+    BUY("BUY"),
+    SELL("SELL");
 
+    private String friendlyName;
+
+    private TransactionType(String friendlyName){
+        this.friendlyName = friendlyName;
+    }
+
+    @Override public String toString(){
+        return friendlyName;
+    }
 }

@@ -1,17 +1,18 @@
 package com.example.user.cc_project02;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by user on 10/07/2017.
  */
 
-public class TransactionList {
+public class TransactionList implements Serializable {
 
     private ArrayList<Transaction> txList;
 
     public TransactionList() {
-        this.txList = new ArrayList<Transaction>();
+        this.txList = new ArrayList<>();
     }
 
     public void addTx(Transaction tx) {
