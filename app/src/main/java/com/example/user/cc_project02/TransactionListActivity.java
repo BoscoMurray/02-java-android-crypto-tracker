@@ -19,10 +19,10 @@ public class TransactionListActivity extends AppCompatActivity {
         TransactionBundle txBundle = new TransactionBundle();
         ArrayList<Transaction> txList = txBundle.getList();
 
-        MainActivityAdapter mainActivityAdapter = new MainActivityAdapter(this, txList);
+        TransactionListAdapter transactionListAdapter = new TransactionListAdapter(this, txList);
 
         ListView listView = (ListView) findViewById(R.id.txlist);
-        listView.setAdapter(mainActivityAdapter);
+        listView.setAdapter(transactionListAdapter);
     }
 
     public void getTx(View listItem) {

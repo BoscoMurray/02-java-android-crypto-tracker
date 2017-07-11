@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 //        TransactionBundle txBundle = new TransactionBundle();
 //        ArrayList<Transaction> txList = txBundle.getList();
 //
-//        MainActivityAdapter mainActivityAdapter = new MainActivityAdapter(this, txList);
+//        TransactionListAdapter mainActivityAdapter = new TransactionListAdapter(this, txList);
 //
 //        ListView listView = (ListView) findViewById(R.id.main);
 //        listView.setAdapter(mainActivityAdapter);

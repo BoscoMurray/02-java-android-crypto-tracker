@@ -14,11 +14,11 @@ import java.util.ArrayList;
  * Created by user on 10/07/2017.
  */
 
-public class MainActivityAdapter extends ArrayAdapter<Transaction> {
+public class TransactionListAdapter extends ArrayAdapter<Transaction> {
 
     Context context;
 
-    public MainActivityAdapter(Context context, ArrayList<Transaction> txList) {
+    public TransactionListAdapter(Context context, ArrayList<Transaction> txList) {
         super(context, 0, txList);
         this.context = context;
     }

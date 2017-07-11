@@ -12,4 +12,17 @@
     <string name="value_title">Value</string>
     <string name="date_hint">yyyyMMdd</string>
     <string name="quantity_hint">Quantity</string>
+    <string-array name="txtype_array">
+        <item>BUY</item>
+        <item>SELL</item>
+    </string-array>
+    <string-array name="currency_array">
+        <item>BITCOIN</item>
+        <item>MONERO</item>
+        <item>LITECOIN</item>
+        <item>ETHEREUM</item>
+        <item>MAIDSAFE</item>
+        <item>UBIQ</item>
+        <item>RIPPLE</item>
+    </string-array>
 </resources>
