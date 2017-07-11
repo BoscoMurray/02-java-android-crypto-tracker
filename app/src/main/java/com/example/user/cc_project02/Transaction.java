@@ -1,5 +1,6 @@
 package com.example.user.cc_project02;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import enums.TransactionType;
@@ -8,7 +9,7 @@ import enums.TransactionType;
  * Created by user on 08/07/2017.
  */
 
-public class Transaction {
+public class Transaction implements Serializable {
 
     private String dateString;
     private TransactionType txType;

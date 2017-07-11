@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Crytpo Tracker</string>
+    <string name="app_name">Crypto Tracker</string>
+    <string name="newtx_button">New Transaction</string>
+    <string name="listtxs_button">List Transactions</string>
+    <string name="savetx_button">Save</string>
+    <string name="summary">Portfolio Value $</string>
+    <string name="date_title">Date</string>
+    <string name="txtype_title">Buy/Sell</string>
+    <string name="currency_title">Currency</string>
+    <string name="quantity_title">Quantity</string>
+    <string name="price_title">Price</string>
+    <string name="value_title">Value</string>
+    <string name="date_hint">yyyyMMdd</string>
+    <string name="quantity_hint">Quantity</string>
 </resources>

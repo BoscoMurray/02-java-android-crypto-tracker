@@ -27,25 +27,26 @@ public class MainActivityAdapter extends ArrayAdapter<Transaction> {
     public View getView(int position, View listItemView, ViewGroup parent) {
 
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.portfolio_item, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.transaction_item, parent, false);
         }
 
         Transaction currentTx = getItem(position);
 
-        TextView currency = (TextView) listItemView.findViewById(R.id.currency);
+        TextView currency = listItemView.findViewById(R.id.currency);
         currency.setText(currentTx.getCurrency().getName().toString());
 
-//        getResources().getIdentifier(currency.getImage(), "drawable", this.getPackageName());
         int drawableResourceId = context.getResources().getIdentifier(currentTx.getCurrency().getImage(), "drawable", context.getPackageName());
 
-        ImageView image = (ImageView) listItemView.findViewById(R.id.imageView);
+        ImageView image = listItemView.findViewById(R.id.imageView);
         image.setImageResource(drawableResourceId);
 
-        TextView quantity = (TextView) listItemView.findViewById(R.id.quantity);
+        TextView quantity = listItemView.findViewById(R.id.quantity);
         quantity.setText(currentTx.getTxQuantity().toString());
 
-        TextView sum = (TextView) listItemView.findViewById(R.id.sum);
+        TextView sum = listItemView.findViewById(R.id.sum);
         sum.setText(currentTx.getTxSum().toString());
+
+        listItemView.setTag(currentTx);
 
         return listItemView;
     }
