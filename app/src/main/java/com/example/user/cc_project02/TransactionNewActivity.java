@@ -1,5 +1,6 @@
 package com.example.user.cc_project02;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,14 +34,23 @@ public class TransactionNewActivity extends AppCompatActivity {
 
     }
 
-    public void onSaveTxButtonClicked(View button) {
-        Log.d(getClass().toString(), "onSaveTxButtonClicked was called");
-
-        String dateString = dateEntry.getText().toString();
-
-        Transaction tx = new Transaction(dateString, txType, currency, quantity);
-
-        Intent intent = new Intent(this, TransactionListActivity.class);
-        startActivity(intent);
+    public void setDate(int year, int month, int day) {
+        dateEntry.setText(day + " - " + month + " - " + year);
     }
+
+    public void openDatePicker(View view) {
+        DialogFragment datePicker = new DatePickerFragment();
+        datePicker.show(getFragmentManager(), "datePicker");
+    }
+
+//    public void onSaveTxButtonClicked(View button) {
+//        Log.d(getClass().toString(), "onSaveTxButtonClicked was called");
+//
+//        String dateString = dateEntry.getText().toString();
+//
+//        Transaction tx = new Transaction(dateString, txType, currency, quantity);
+//
+//        Intent intent = new Intent(this, TransactionListActivity.class);
+//        startActivity(intent);
+//    }
 }

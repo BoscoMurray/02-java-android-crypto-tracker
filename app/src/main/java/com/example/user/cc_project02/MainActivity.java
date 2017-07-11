@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onNewTxButtonClicked(View button) {
         Log.d(getClass().toString(), "onNewTxButtonClicked was called");
+        Intent intent = new Intent(this, TransactionNewActivity.class);
+        startActivity(intent);
     }
 
     public void onListTxsButtonClicked(View button) {
