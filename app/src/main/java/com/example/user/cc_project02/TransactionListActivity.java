@@ -13,21 +13,25 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-public class TransactionListActivity extends AppCompatActivity {
+public class TransactionListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_list);
 
-        //Get SharedPreferences "db" called "crypto-tracker"
+        //Get SharedPreferences "db" called "crypto-tracker" into "sharedPrefs" object
         SharedPreferences sharedPrefs = getSharedPreferences("crypto-tracker", MODE_PRIVATE);
-        
+
+        //Create a string "transactions" of the sharedPref item "myTransactions"
         String transactions = sharedPrefs.getString("myTransactions", new ArrayList<Transaction>().toString());
+
+        //Convert the "transactions" string into an ArrayList<Transaction> called txList
         Gson gson = new Gson();
         TypeToken<ArrayList<Transaction>> txArrayList = new TypeToken<ArrayList<Transaction>>(){};
         ArrayList<Transaction> txList = gson.fromJson(transactions, txArrayList.getType());
 
+        //Use txList in TransactionListAdapter
         TransactionListAdapter transactionListAdapter = new TransactionListAdapter(this, txList);
 
         ListView listView = (ListView) findViewById(R.id.txlist);
@@ -38,8 +42,10 @@ public class TransactionListActivity extends AppCompatActivity {
         Transaction tx = (Transaction) listItem.getTag();
         Log.d(getClass().toString(), tx.getCurrency().getName().toString());
 
-//        Intent intent = new Intent(this, TransactionDetailActivity.class);
-//        intent.putExtra("tx", tx);
-//        startActivity(intent);
+
+        Intent intent = new Intent(this, TransactionDetailActivity.class);
+        intent.putExtra("tx", tx);
+        startActivity(intent);
+//        finish();
     }
 }

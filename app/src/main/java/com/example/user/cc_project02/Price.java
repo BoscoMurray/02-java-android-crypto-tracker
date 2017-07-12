@@ -1,5 +1,6 @@
 package com.example.user.cc_project02;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,10 +12,10 @@ import java.util.Random;
  * Created by user on 07/07/2017.
  */
 
-public class Price {
+public class Price implements Serializable {
 
     private int basePrice;
-    public HashMap<String, Integer> priceList;
+    private HashMap<String, Integer> priceList;
 
 
     public Price(int basePrice) {

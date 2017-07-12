@@ -1,12 +1,14 @@
 package com.example.user.cc_project02;
 
+import java.io.Serializable;
+
 import enums.CurrencyName;
 
 /**
  * Created by user on 07/07/2017.
  */
 
-public class Currency {
+public class Currency implements Serializable {
 
     private CurrencyName name;
     private String image;

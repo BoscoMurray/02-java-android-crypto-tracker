@@ -2,6 +2,7 @@ package com.example.user.cc_project02;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Enumeration;
 
 import enums.CurrencyName;
@@ -21,7 +25,7 @@ import enums.TransactionType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class TransactionNewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class TransactionNewActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     TextView dateEntry;
     Spinner txTypeSpinner;
@@ -31,7 +35,8 @@ public class TransactionNewActivity extends AppCompatActivity implements Adapter
     ArrayAdapter<TransactionType> txTypeAdapter;
     ArrayAdapter<CurrencyName> currencyAdapter;
     private TransactionType selectedTxType;
-    private CurrencyName selectedCurrencyType;
+    private CurrencyName selectedCurrency;
+    Currency currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,13 @@ public class TransactionNewActivity extends AppCompatActivity implements Adapter
     }
 
     public void setDate(int year, int month, int day) {
-        dateEntry.setText(day + " - " + month + " - " + year);
+
+        Calendar c = Calendar.getInstance();
+        c.set(year, month, day);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
+        dateEntry.setText(sdf.format(c.getTime()));
     }
 
     public void openDatePicker(View view) {
@@ -69,20 +80,51 @@ public class TransactionNewActivity extends AppCompatActivity implements Adapter
     public void onSaveTxButtonClicked(View button) {
         Log.d(getClass().toString(), "onSaveTxButtonClicked was called");
 
+        // Date
         String dateString = dateEntry.getText().toString();
-//        TransactionType txType = TransactionType.valueOf(selectedTxType);
-//        CurrencyName currName = CurrencyName.valueOf(selectedCurrencyType);
 
-       // Enum currency = currencySpinner;
+            Log.e("Ahh", dateString);
+
+        // Get Currencies, loop to find selected currency
+        SharedPreferences sharedPrefs = getSharedPreferences("crypto-tracker", MODE_PRIVATE);
+        Gson gsonCurr = new Gson();
+        String myCurrencies = sharedPrefs.getString("myCurrencies", new ArrayList<Currency>().toString());
+        TypeToken<ArrayList<Currency>> currencyArrayList = new TypeToken<ArrayList<Currency>>(){};
+        ArrayList<Currency> currencies = gsonCurr.fromJson(myCurrencies, currencyArrayList.getType());
+        for(Currency curr : currencies) {
+            if(curr.getName() == selectedCurrency) {
+                currency = curr;
+            }
+        }
+
+        // Quantity
         int quantity = Integer.parseInt(quantityEntry.getText().toString());
 
-        Currency currency = TransactionBundle.getCurrencyBasedOnCurrencyName(selectedCurrencyType);
-
+        // Build tx
         Transaction tx = new Transaction(dateString, selectedTxType, currency, quantity);
 
-//        Gson gson = new Gson
+        // Get existing txs
+        Gson gsonTxs = new Gson();
+        String myTxs = sharedPrefs.getString("myTransactions", new ArrayList<Transaction>().toString());
+        TypeToken<ArrayList<Transaction>> transactionArrayList = new TypeToken<ArrayList<Transaction>>(){};
+        ArrayList<Transaction> txList = gsonTxs.fromJson(myTxs, transactionArrayList.getType());
+
+        // Add newTx
+        txList.add(tx);
+
+        // Save new txs
+        Gson gsonNewTxs = new Gson();
+        SharedPreferences.Editor editor;
+        editor = sharedPrefs.edit();
+        editor.putString("myTransactions", gsonNewTxs.toJson(txList));
+        editor.apply();
+
+
 
         Intent intent = new Intent(this, TransactionDetailActivity.class);
+
+        intent.putExtra("tx", tx);
+
         startActivity(intent);
     }
 
@@ -93,7 +135,7 @@ public class TransactionNewActivity extends AppCompatActivity implements Adapter
                 this.selectedTxType =  (TransactionType) adapterView.getItemAtPosition(i);
                 break;
             case R.id.currency_spinner:
-                this.selectedCurrencyType = (CurrencyName) adapterView.getItemAtPosition(i);
+                this.selectedCurrency = (CurrencyName) adapterView.getItemAtPosition(i);
                 break;
         }
     }

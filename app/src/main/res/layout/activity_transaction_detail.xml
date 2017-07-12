@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/date_title"
-        android:layout_width="50dp"
+        android:layout_width="65dp"
         android:layout_height="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -52,8 +52,8 @@
 
     <TextView
         android:id="@+id/date_detail"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -63,7 +63,7 @@
     <TextView
         android:id="@+id/currency_detail"
         android:layout_width="85dp"
-        android:layout_height="30dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -73,7 +73,7 @@
     <TextView
         android:id="@+id/quantity_detail"
         android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -83,7 +83,7 @@
     <TextView
         android:id="@+id/price_detail"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -92,6 +92,7 @@
 
     <Button
         android:id="@+id/newtx_button"
+        android:onClick="onNewTxButtonClicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -102,17 +103,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantity_detail" />
 
-    <Button
-        android:id="@+id/listtxs_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/listtxs_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newtx_button" />
+    <!--<Button-->
+        <!--android:id="@+id/listtxs_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="clickGoBack"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:text="@string/listtxs_button"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/newtx_button" />-->
 
     <TextView
         android:id="@+id/value_title"
@@ -126,13 +128,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/value_detail"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@+id/price_detail"
         app:layout_constraintTop_toBottomOf="@+id/value_title" />
+
+    <ImageView
+        android:id="@+id/image_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/bitcoin"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/currency_detail"
+        app:layout_constraintBottom_toBottomOf="@+id/currency_detail"
+        android:layout_marginBottom="8dp" />
+ />
 </android.support.constraint.ConstraintLayout>

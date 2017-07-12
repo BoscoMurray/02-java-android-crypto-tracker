@@ -16,7 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import enums.CurrencyName;
 import enums.TransactionType;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     Button newTxButton;
     Button listTxsButton;
