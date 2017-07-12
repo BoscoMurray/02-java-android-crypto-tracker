@@ -30,7 +30,5 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         TransactionNewActivity transactionNewActivity = (TransactionNewActivity) getActivity();
 
         transactionNewActivity.setDate(year, month, day);
-        // Do what you want
-        // Do something with the date chosen by the user
     }
 }

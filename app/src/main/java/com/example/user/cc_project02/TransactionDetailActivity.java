@@ -1,5 +1,6 @@
 package com.example.user.cc_project02;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,9 @@ public class TransactionDetailActivity extends BaseActivity {
 
         TextView txDate = (TextView) findViewById(R.id.date_detail);
         txDate.setText(tx.getTxDate());
+
+        TextView txType = (TextView) findViewById(R.id.txtype_detail);
+        txType.setText(tx.getTxType().toString());
 
         TextView txCurrency =(TextView) findViewById(R.id.currency_detail);
         txCurrency.setText(tx.getCurrency().getName().toString());
@@ -39,6 +43,8 @@ public class TransactionDetailActivity extends BaseActivity {
 
     public void onNewTxButtonClicked(View button) {
         Log.d(getClass().toString(), "onNewTxButtonClicked was called");
+        Intent intent = new Intent(this, TransactionNewActivity.class);
+        startActivity(intent);
     }
     
 }

@@ -74,6 +74,9 @@ public class MainActivity extends BaseActivity {
 
             editor.apply();
         }
+//        editor = sharedPrefs.edit();
+//        editor.clear();
+//        editor.apply();
 
         // Get allTxsSum to display as Portfolio value
         String allTransactions = sharedPrefs.getString("myTransactions", new ArrayList<Transaction>().toString());

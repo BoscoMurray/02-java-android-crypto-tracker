@@ -55,5 +55,11 @@ public class TransactionListTest {
         assertEquals((Integer) 5450, txList.getSumOfTxs());
     }
 
+    @Test
+    public void canAddTx() {
+        txList.addTx(txBuy01);
+        assertEquals(4, txList.getTxList().size());
+    }
+
 
 }
