@@ -103,19 +103,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantity_detail" />
 
-    <!--<Button-->
-        <!--android:id="@+id/listtxs_button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:onClick="clickGoBack"-->
-        <!--android:layout_marginLeft="8dp"-->
-        <!--android:layout_marginRight="8dp"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:text="@string/listtxs_button"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/newtx_button" />-->
-
     <TextView
         android:id="@+id/value_title"
         android:layout_width="wrap_content"
@@ -147,5 +134,5 @@
         app:layout_constraintLeft_toLeftOf="@+id/currency_detail"
         app:layout_constraintBottom_toBottomOf="@+id/currency_detail"
         android:layout_marginBottom="8dp" />
- />
+
 </android.support.constraint.ConstraintLayout>

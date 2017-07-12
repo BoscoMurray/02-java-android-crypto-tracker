@@ -2,13 +2,12 @@ package com.example.user.cc_project02;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,9 +26,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         Log.d(getClass().toString(), "onCreate called");
 
-//        TransactionBundle txBundle = new TransactionBundle();
-//        ArrayList<Transaction> txList = txBundle.getList();
-
+        // Create Currencies (with Prices) and Transaction seed data, if it doesn't already exist
         SharedPreferences sharedPrefs = getSharedPreferences("crypto-tracker", MODE_PRIVATE);
         SharedPreferences.Editor editor;
         if(!sharedPrefs.contains("initialized")){
@@ -78,18 +75,18 @@ public class MainActivity extends BaseActivity {
             editor.apply();
         }
 
+        // Get allTxsSum to display as Portfolio value
+        String allTransactions = sharedPrefs.getString("myTransactions", new ArrayList<Transaction>().toString());
+        Gson gsonAllTxs = new Gson();
+        TypeToken<ArrayList<Transaction>> txArrayList = new TypeToken<ArrayList<Transaction>>(){};
+        ArrayList<Transaction> transactionsArrayList = gsonAllTxs.fromJson(allTransactions, txArrayList.getType());
+        TransactionList txList = new TransactionList(transactionsArrayList);
+        TextView value = (TextView) findViewById(R.id.portfolio_value);
+        value.setText(txList.getSumOfTxs().toString());
+
         newTxButton = (Button) findViewById(R.id.newtx_button);
         listTxsButton = (Button) findViewById(R.id.listtxs_button);
     }
-
-
-//
-//        TransactionListAdapter mainActivityAdapter = new TransactionListAdapter(this, txList);
-//
-//        ListView listView = (ListView) findViewById(R.id.main);
-//        listView.setAdapter(mainActivityAdapter);
-//
-//    }
 
     public void onNewTxButtonClicked(View button) {
         Log.d(getClass().toString(), "onNewTxButtonClicked was called");
@@ -104,14 +101,4 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-//
-//    public void getTx(View listItem) {
-//        Transaction tx = (Transaction) listItem.getTag();
-//        Log.d(getClass().toString(), tx.getCurrency().getName().toString());
-//
-//        Intent intent = new Intent(this, TransactionDetailActivity.class);
-//        intent.putExtra("tx", tx);
-//        startActivity(intent);
-//
-//    }
 }

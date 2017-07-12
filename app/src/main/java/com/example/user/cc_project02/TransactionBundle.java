@@ -49,17 +49,6 @@ public class TransactionBundle {
         txList.add(new Transaction("20170701", TransactionType.SELL, nem, 10));
     }
 
-    public static Currency getCurrencyBasedOnCurrencyName(CurrencyName curName) {
-
-        for(Currency cur : currencies) {
-            if(cur.getName() == curName) {
-                return cur;
-            }
-        }
-
-        return null;
-    }
-
     public ArrayList<Transaction> getList() {
         return new ArrayList<>(txList);
     }

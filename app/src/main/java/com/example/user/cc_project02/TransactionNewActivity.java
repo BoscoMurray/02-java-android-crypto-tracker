@@ -3,11 +3,9 @@ package com.example.user.cc_project02;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Enumeration;
 
 import enums.CurrencyName;
 import enums.TransactionType;
@@ -112,19 +109,16 @@ public class TransactionNewActivity extends BaseActivity implements AdapterView.
         // Add newTx
         txList.add(tx);
 
-        // Save new txs
+        // Save new txs to SharedPrefs
         Gson gsonNewTxs = new Gson();
         SharedPreferences.Editor editor;
         editor = sharedPrefs.edit();
         editor.putString("myTransactions", gsonNewTxs.toJson(txList));
         editor.apply();
 
-
-
+        // Create intent, putExtra tx
         Intent intent = new Intent(this, TransactionDetailActivity.class);
-
         intent.putExtra("tx", tx);
-
         startActivity(intent);
     }
 

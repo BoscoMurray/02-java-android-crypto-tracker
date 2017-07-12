@@ -21,7 +21,13 @@ public class Transaction implements Serializable {
         this.dateString = dateString;
         this.txType = txType;
         this.currency = currency;
-        this.quantity = quantity;
+        if(txType == TransactionType.BUY) {
+            this.quantity = quantity;
+        }
+        if(txType == TransactionType.SELL) {
+            this.quantity = (quantity * -1);
+        }
+
         this.price = currency.getPriceList().getPriceByDate(dateString);
     }
 

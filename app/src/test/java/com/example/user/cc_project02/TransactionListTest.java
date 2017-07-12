@@ -27,32 +27,32 @@ public class TransactionListTest {
     public void before() {
         bitcoin = new Currency(CurrencyName.BITCOIN, "bitcoin", 2500);
         monero = new Currency(CurrencyName.MONERO, "monero", 50);
-        txList = new TransactionList();
+        ArrayList<Transaction> txArrayList = new ArrayList<>();
         txBuy01 = new Transaction("20170526", TransactionType.BUY, bitcoin, 2);
-        txBuy02 = new Transaction("20170528", TransactionType.BUY, monero, 500);
-        txSell01 = new Transaction("20170701", TransactionType.SELL, monero, -10);
-        txList.addTx(txBuy01);
+        txBuy02 = new Transaction("20170528", TransactionType.BUY, monero, 10);
+        txSell01 = new Transaction("20170701", TransactionType.SELL, monero, 1);
+        txBuy01.setTxPrice(2500);
+        txBuy02.setTxPrice(50);
+        txSell01.setTxPrice(50);
+        txArrayList.add(txBuy01);
+        txArrayList.add(txBuy02);
+        txArrayList.add(txSell01);
+        txList = new TransactionList(txArrayList);
     }
 
     @Test
     public void canGetTxList() {
-        assertEquals(1, txList.getTxList().size());
+        assertEquals(3, txList.getTxList().size());
     }
 
     @Test
     public void canGetTxByIndex() {
-        txList.addTx(txBuy02);
         assertEquals(monero, txList.getTxByIndex(1).getCurrency());
     }
 
     @Test
     public void canGetSumOfTxs() {
-        txList = new TransactionList();
-        txBuy01.setTxPrice(1000);
-        txSell01.setTxPrice(55);
-        txList.addTx(txBuy01);
-        txList.addTx(txSell01);
-        assertEquals((Integer) 1450, txList.getSumOfTxs());
+        assertEquals((Integer) 5450, txList.getSumOfTxs());
     }
 
 

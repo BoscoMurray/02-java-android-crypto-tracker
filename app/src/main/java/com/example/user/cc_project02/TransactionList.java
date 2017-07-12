@@ -11,8 +11,9 @@ public class TransactionList implements Serializable {
 
     private ArrayList<Transaction> txList;
 
-    public TransactionList() {
-        this.txList = new ArrayList<>();
+    public TransactionList(ArrayList<Transaction> txArrayList) {
+
+        this.txList = txArrayList;
     }
 
     public void addTx(Transaction tx) {

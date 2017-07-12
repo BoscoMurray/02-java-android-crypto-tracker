@@ -42,10 +42,8 @@ public class TransactionListActivity extends BaseActivity {
         Transaction tx = (Transaction) listItem.getTag();
         Log.d(getClass().toString(), tx.getCurrency().getName().toString());
 
-
         Intent intent = new Intent(this, TransactionDetailActivity.class);
         intent.putExtra("tx", tx);
         startActivity(intent);
-//        finish();
     }
 }
